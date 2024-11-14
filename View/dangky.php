@@ -67,3 +67,68 @@ if(isset($_POST['register'])) {
     
 </body>
 </html>
+<!-- ===============================================================================================  -->
+ <?php 
+ include('../Model/connect.php');
+ session_start();
+ if(isset($_SESSION['user_id'])){
+    $user_id= $_SESSION['user_id'];
+ }else{
+    $user_id='';
+ }
+ // dang ky
+ if(isset($_POST['submit'])){
+    $id = unique_id();
+    $name = $_POST['name'];
+    $name= filter_var($name,FILTER_SANITIZE_STRING);
+    $email = $_POST['email'];
+    $email= filter_var($email,FILTER_SANITIZE_STRING);
+    $pass = $_POST['pass'];
+    $pass= filter_var($pass,FILTER_SANITIZE_STRING);
+    $cpass = $_POST['cpass'];
+    $cpass= filter_var($cpass,FILTER_SANITIZE_STRING);
+
+    $select_users = $conn ->prepare("SELECT * FROM `nguoidung` WHERE email= ?");
+    $select_users -> execute([ $email]);
+    $row = $select_users->fetch_assoc();
+
+    if ($select_users->num_rows > 0) { //num_rows
+        echo '<script>alert("Email đã tồn tại")</script>';
+    } else {
+        if ($pass != $cpass) {
+            echo '<script>alert("Mật khẩu không khớp")</script>';
+        } else {
+            // Chuẩn bị câu lệnh INSERT
+            $sql = $conn->prepare("INSERT INTO `nguoidung` (id_nguoidung, tennguoidung, email, matkhau) VALUES (?, ?, ?, ?)");
+            $sql->bind_param("isss", $id, $name, $email, $pass); // Thay thế `?` bằng các biến cụ thể
+            $sql->execute();
+    
+            // Chuẩn bị câu lệnh SELECT
+            $sql = $conn->prepare("SELECT * FROM `nguoidung` WHERE email = ? AND matkhau = ?");
+            $sql->bind_param("ss", $email, $pass); // Thay thế `?` bằng các biến cụ thể
+            $sql->execute();
+            $result = $sql->get_result();
+            $row = $result->num_rows; // Kiểm tra số hàng lấy được
+
+            if($_SESSION[])
+        }
+    }
+    
+    }
+ }
+ ?>
+ <style type="text/css">
+<?php include 'style.css' ;
+?>
+ </style>
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Green Tea - Đăng ký </title>
+ </head>
+ <body>
+    
+ </body>
+ </html>
