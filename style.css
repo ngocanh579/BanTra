@@ -161,7 +161,8 @@ html{
         z-index: 1000;
         transition: .3s;
         box-shadow: var(--box-shadow);
-        padding: 1rem;
+        padding: 1rem 2rem;
+        align-items: center;
     } 
     header .scrolled{
         top: 0;
@@ -232,6 +233,30 @@ html{
     .header .user-box.active{
         transform: scale(1.0);
         transition: .2s linear;
+    }
+    .header .search-container {
+        display: inline-block;
+        vertical-align: middle;
+        margin-left: 50px;
+    }
+    .header .search-container input[type="text"] {
+        padding: 5px;
+        font-size: 16px;
+        border: 1px solid #ddd;
+        border-radius: 20px 0 0 20px;
+        width: 200px;
+        outline: none;
+    }
+    .header .search-container button {
+        padding: 5px 10px;
+        font-size: 16px;
+        border: none;
+        background-color: #d4f1c5;
+        border-radius: 20px;
+        cursor: pointer;
+    }
+    .header .search-container button:hover {
+        background-color: #0056b3;
     }
     /* ------------- home slider section----------- */
     .home-section{
