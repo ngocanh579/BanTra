@@ -52,7 +52,7 @@ $conn = new mysqli($severname, $username , $password,$dbname);
                     <a href="#" class="item">Bảng tin nhắn chạy</a>
                 </div>
 
-                <h3>Quản lý phần đơn hàng</h3>
+                            <h3>Quản lý phần đơn hàng</h3>
                 <div>
                     <a href="#" class="item">Danh sách đơn hàng đặt</a>
                 </div>
