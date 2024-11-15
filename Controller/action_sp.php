@@ -48,7 +48,7 @@ if (isset($_POST['txtthem'])) {
 
     if ($in_product) {
         echo "<script>alert('Thêm sản phẩm thành công');</script>";
-        echo "<script>window.location = '../View/Admin/SanPham/list_sp.php'</script>";
+        echo "<script>window.location = '../View/Admin/list_sp.php'</script>";
     } else {
         echo "<script>alert('Lỗi khi thêm sản phẩm');</script>";
     }

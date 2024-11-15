@@ -1,3 +1,36 @@
+
+<?php
+    include ('../Model/connect.php');
+    session_start();
+    $user_id = $_SESSION['user_id'];
+
+if(!isset($user_id)){
+   header('location:login.php');
+}
+
+
+if(isset($_POST['add_to_cart'])){
+
+    $product_name = $_POST['product_name'];
+    $product_price = $_POST['product_price'];
+    $product_image = $_POST['product_image'];
+    $product_quantity = $_POST['product_quantity'];
+ 
+    $check_cart_numbers = mysqli_query($conn, "SELECT * FROM `giohang` WHERE ten_sanpham = '$product_name' AND id_nguoidung = '$user_id'") or die('query failed');
+ 
+    if(mysqli_num_rows($check_cart_numbers) > 0){
+       $message[] = 'already added to cart!';
+    }else{
+       mysqli_query($conn, "INSERT INTO `giohang`(id_nguoidung, ten_sanpham, gia, soluong, image) VALUES('$user_id', '$product_name', '$product_price', '$product_quantity', '$product_image')") or die('query failed');
+       $message[] = 'product added to cart!';
+    }
+ 
+ }
+
+?>
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -112,11 +145,11 @@
             if (mysqli_num_rows($select) > 0) {
                 while ($fetch_products = mysqli_fetch_assoc($select)) {
             ?>
-                    <form action="../View/giohang.php" method="post" class="box">
+                    <form action="" method="post" class="box">
                         <img class="image" src="../image/image_sp/<?php echo $fetch_products['image']; ?>" alt="" width="200px" height="200px">
                         <div class="name"><?php echo $fetch_products['ten_sanpham']; ?></div>
                         <div class="price"><?php echo number_format($fetch_products['gia'], 0, ',', '.'); ?> VND</div>
-                        <input type="number" min="1" name="số lượng" value="1" class="qty" width="200px">
+                        <input type="number" min="1" name="product_quantity" value="1" class="qty" width="200px">
                         <input type="hidden" name="product_name" value="<?php echo $fetch_products['ten_sanpham']; ?>">
                         <input type="hidden" name="product_price" value="<?php echo $fetch_products['gia']; ?>">
                         <input type="hidden" name="product_image" value="<?php echo $fetch_products['image']; ?>">

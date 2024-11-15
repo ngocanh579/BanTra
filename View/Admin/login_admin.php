@@ -11,9 +11,9 @@ if (isset($_POST['login'])) {
         $row = mysqli_fetch_assoc($select_users);
         
         if ($row) { // Kiểm tra nếu $row không rỗng
-            $_SESSION['user_name'] = $row['tennguoidung'];
-            $_SESSION['user_email'] = $row['email'];
-            $_SESSION['user_id'] = $row['id_nguoidung'];
+            $_SESSION['admin_name'] = $row['ten'];
+            $_SESSION['admin_email'] = $row['email'];
+            $_SESSION['admin_id'] = $row['id'];
             header('Location: ../View/home.php');
             exit();
         }
@@ -51,7 +51,7 @@ if (isset($_POST['login'])) {
                     <input type="password" name="txtpassword" maxlength="20" required placeholder="Mật khẩu">
                 </div>
                 <button type="submit" name="login" class="btn">Đăng nhập</button>
-                <p>Chưa có tài khoản?<a href="../View/dangky.php">Đăng ký</a></p>
+                <p>Chưa có tài khoản?<a href="../View/Admin/dangky_admin.php">Đăng ký</a></p>
             </form>
         </div>
     </section>
