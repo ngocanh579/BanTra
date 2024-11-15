@@ -26,12 +26,19 @@ $conn = new mysqli($severname, $username , $password,$dbname);
             <?php include('menu.php')?>
             
         </div>
-
         
 
         <!-- Main Content -->
         <div class="main-content">
-            <h2>TRANG QUẢN TRỊ</h2>
+        <div class="header1">
+                <div class="text-2xl font-bold">TRANG QUẢN TRỊ</div>
+                <div class="search-bar">
+                    <input type="text" placeholder="Search...">
+                    <div class="profile">
+                        <img src="../image/avatar.png">
+                        <span>Steave</span>
+                    </div>
+                </div>
             <div class="dashboard-info">
                 <div class="info-box">
                     <p>1200</p>
