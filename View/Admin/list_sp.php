@@ -122,7 +122,7 @@
                             <td><?php echo $se_product['ten_sanpham'] ?></td>
                             <td><?php echo $se_product['gia'] ?></td>
 
-                            <td><img src="../../image/<?php echo $se_product['image'] ?> "width="100px" height="100px" ></td>
+                            <td><img src="../../image/image_sp/<?php echo $se_product['image'] ?> "width="100px" height="100px" ></td>
                             <td><?php echo $se_product['thongtinchitiet_sanpham'] ?></td>
                             <td><?php echo $se_product['trangthai_sanpham'] ?></td>
                             <td><?php echo $se_product['doanhmuc'] ?></td>

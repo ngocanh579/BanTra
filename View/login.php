@@ -18,6 +18,7 @@ if (isset($_POST['login'])) {
                 header('Location: ../View/Admin/quantri.php');
                 exit();
             } else {
+                //Lấy thông tin người dùng
                 $_SESSION['user_name'] = $row['tennguoidung'];
                 $_SESSION['user_email'] = $row['email'];
                 $_SESSION['user_id'] = $row['id_nguoidung'];
